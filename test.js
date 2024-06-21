@@ -1,4 +1,4 @@
-const { Builder, By, Key, until } = require("selenium-webdriver");
+const { Builder, By, until } = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 
 async function test_case() {
@@ -15,7 +15,7 @@ async function test_case() {
         .build();
 
     try {
-        await driver.get("index.html"); // Adjust URL as per your environment
+        await driver.get("index.html"); 
 
         await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
 
@@ -42,7 +42,11 @@ async function test_case() {
     } catch (error) {
         console.error('An error occurred:', error);
     } finally {
-        await driver.quit();
+        try {
+            await driver.quit();
+        } catch (quitError) {
+            console.error('Error quitting WebDriver:', quitError);
+        }
     }
 }
 
