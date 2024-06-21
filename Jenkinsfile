@@ -1,6 +1,7 @@
 pipeline{
     agent {label "aws"}
     environment {
+    npm install -g npm
     TEST_RESULT_FILE = 'test_result.txt'
     TOKENAWS = credentials('controller-ssh-key')
     }
