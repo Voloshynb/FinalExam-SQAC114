@@ -16,9 +16,7 @@ async function test_case() {
     try {
         await driver.get("index.html"); 
 
-        await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
-
-        let cells = await driver.findElements(By.css(".cell"));
+        let cells = await driver.findElements(By.id("cell0")).click;
 
         async function checkCell(cell) {
             let text = await cell.getText();
