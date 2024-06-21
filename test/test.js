@@ -14,7 +14,7 @@ async function test_case() {
     let driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
 
     try {
-        await driver.get("/index.html"); 
+        await driver.get("54.196.255.164"); 
 
         await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
 
