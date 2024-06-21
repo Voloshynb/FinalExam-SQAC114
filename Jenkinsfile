@@ -30,18 +30,18 @@ pipeline{
             }
              }
         } 
-        stage('Staging Environment'){
-             when{
-               expression {
-                def testResult = readFile(env.TEST_RESULT_FILE).trim()
-                return testResult == 'true'
-                }           
+            stage('Staging Environment'){
+                when{
+                  expression {
+                   def testResult = readFile(env.TEST_RESULT_FILE).trim()
+                   return testResult == 'true'
+                   }           
              }
             steps{
                 sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
         } 
-        stage('Production Environment 1'){
-             when{
+            stage('Production Environment 1'){
+              when{
                expression {
                 def testResult = readFile(env.TEST_RESULT_FILE).trim()
                 return testResult == 'true'
@@ -51,7 +51,7 @@ pipeline{
              sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
             }
         } 
-        stage('Production Environment 2'){
+            stage('Production Environment 2'){
              when{
                expression {
                 def testResult = readFile(env.TEST_RESULT_FILE).trim()
