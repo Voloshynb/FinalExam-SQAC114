@@ -13,7 +13,7 @@ pipeline{
                 try{
                     sh 'npm install selenium-webdriver'
                     
-                    def output = sh(script: '/test/test.js', returnStdout: true).trim()
+                    def output = sh(script: 'node /test/test.js', returnStdout: true).trim()
 
                     echo "Test Output: ${output}"
 
