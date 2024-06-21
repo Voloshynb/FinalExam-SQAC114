@@ -1,24 +1,25 @@
-const { By, Builder } = require("selenium-webdriver");
+const { Builder, By, Key, until } = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
-const { until } = require("selenium-webdriver");
 
 async function test_case() {
     let options = new chrome.Options();
-    options.addArguments('headless'); 
-    options.addArguments('disable-gpu'); 
-    options.addArguments('no-sandbox'); 
-    options.addArguments('disable-dev-shm-usage'); 
+    options.addArguments('headless');
+    options.addArguments('disable-gpu');
+    options.addArguments('no-sandbox');
+    options.addArguments('disable-dev-shm-usage');
     options.setChromeBinaryPath('/usr/bin/google-chrome');
 
-
-    let driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
+    let driver = await new Builder()
+        .forBrowser("chrome")
+        .setChromeOptions(options)
+        .build();
 
     try {
-        await driver.get("54.196.255.164"); 
+        await driver.get("index.html"); // Adjust URL as per your environment
 
         await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
 
-        let cells = await driver.findElements(By.css(".cell")); 
+        let cells = await driver.findElements(By.css(".cell"));
 
         async function checkCell(cell) {
             let text = await cell.getText();
@@ -45,4 +46,4 @@ async function test_case() {
     }
 }
 
-test_case(); 
+test_case();
