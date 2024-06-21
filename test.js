@@ -18,9 +18,9 @@ async function test_case() {
 
         await driver.get("http://54.196.255.164/");
 
-        await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
+        await driver.wait(until.elementLocated(By.id("table_game")), 10000);
 
-        let cells = await driver.findElements(By.css(".cell"));
+        let cells = await driver.findElements(By.id("cell0"));
 
         // Check if cells is iterable (array-like or iterable object)
         if (!Array.isArray(cells) && !cells[Symbol.iterator]) {
