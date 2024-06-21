@@ -16,7 +16,7 @@ async function test_case() {
             .setChromeOptions(options)
             .build();
 
-        await driver.get("http://54.196.255.164/");
+        await driver.get("http://54.196.255.164/"); //change to your url of test env
 
         await driver.wait(until.elementLocated(By.id("table_game")), 10000);
 
