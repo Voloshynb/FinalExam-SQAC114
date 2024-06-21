@@ -8,6 +8,7 @@ async function test_case() {
     options.addArguments('disable-gpu'); 
     options.addArguments('no-sandbox'); 
     options.addArguments('disable-dev-shm-usage'); 
+    options.setChromeBinaryPath('/usr/bin/google-chrome');
 
 
     let driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
