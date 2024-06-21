@@ -14,7 +14,7 @@ async function test_case() {
         .build();
 
     try {
-        await driver.get("index.html"); 
+        await driver.get("http://54.196.255.164/"); 
 
         let cells = await driver.findElements(By.id("cell0")).click;
 
