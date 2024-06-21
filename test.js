@@ -7,16 +7,25 @@ async function test_case() {
     options.addArguments('disable-gpu');
     options.addArguments('no-sandbox');
     options.addArguments('disable-dev-shm-usage');
+    options.setChromeBinaryPath('/usr/bin/google-chrome');
 
-    let driver = await new Builder()
-        .forBrowser("chrome")
-        .setChromeOptions(options)
-        .build();
-
+    let driver;
     try {
-        await driver.get("http://54.196.255.164/"); 
+        driver = await new Builder()
+            .forBrowser("chrome")
+            .setChromeOptions(options)
+            .build();
 
-        let cells = await driver.findElements(By.id("cell0")).click;
+        await driver.get("http://54.196.255.164/");
+
+        await driver.wait(until.elementLocated(By.id("gameBoard")), 10000);
+
+        let cells = await driver.findElements(By.css(".cell"));
+
+        // Check if cells is iterable (array-like or iterable object)
+        if (!Array.isArray(cells) && !cells[Symbol.iterator]) {
+            throw new Error('Cells returned by findElements is not iterable.');
+        }
 
         async function checkCell(cell) {
             let text = await cell.getText();
@@ -39,10 +48,12 @@ async function test_case() {
     } catch (error) {
         console.error('An error occurred:', error);
     } finally {
-        try {
-            await driver.quit();
-        } catch (quitError) {
-            console.error('Error quitting WebDriver:', quitError);
+        if (driver) {
+            try {
+                await driver.quit();
+            } catch (quitError) {
+                console.error('Error quitting WebDriver:', quitError);
+            }
         }
     }
 }
