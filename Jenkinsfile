@@ -7,7 +7,7 @@ pipeline{
  stages{
         stage('Testing Environment'){
             steps{
-              sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
+              sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@54.196.255.164 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
               script{
                 try{
                     sh 'npm install selenium-webdriver'
@@ -37,7 +37,7 @@ pipeline{
                    }           
              }
             steps{
-                sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
+                sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@3.84.32.83 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
          } 
         }
         stage('Production Environment 1'){
@@ -48,7 +48,7 @@ pipeline{
                 }           
              }
             steps{
-             sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
+             sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@18.206.156.76 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
             }
         } 
         stage('Production Environment 2'){
@@ -59,7 +59,7 @@ pipeline{
                     }           
                 }
                 steps{
-                sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@35.170.50.195 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
+                sh 'ssh -T -oStrictHostKeyChecking=no -i "$TOKENAWS" ec2-user@3.82.25.222 " sudo dnf update; sudo dnf install git -y; sudo dnf install -y httpd; sudo systemctl start httpd; sudo rm -Rf /var/www/html/; sudo git clone https://github.com/Voloshynb/FinalExam-SQAC114 /var/www/html"'
                     }
                 }
             }
